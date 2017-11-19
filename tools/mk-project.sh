@@ -112,6 +112,7 @@ echo 'Start state: '${start_state}
 
 mkdir "${project_name}"
 mkdir -p "${project_name}/util"
+mkdir -p "${project_name}/states"
 
 bash ${tools_path}/makefile.sh "${project_name}" > Makefile
 
@@ -131,6 +132,10 @@ bash ${tools_path}/main-lua.sh \
 
 bash ${tools_path}/state-lua.sh -"${state_options}" \
   > "${project_name}/util/state.lua"
+
+bash ${tools_path}/start-state-lua.sh "${start_state}" \
+  > "${project_name}/states/$(echo ${start_state} \
+    | tr '[[:upper:]]' '[[:lower:]]').lua"
 
 cp ${template_path}/util/class.lua "${project_name}/util/class.lua"
 cp ${template_path}/util/stack.lua "${project_name}/util/stack.lua"
