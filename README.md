@@ -1,6 +1,6 @@
 # Love Project Builder
 
-This repository contains some useful script for setting up a Love2D template
+This repository contains some useful scripts for setting up a Love2D template
 for new projects.
 
 ## Install
