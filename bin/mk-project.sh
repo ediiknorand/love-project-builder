@@ -16,7 +16,7 @@ template_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../template/"
 
 # Default template
 
-echo 'Create a project from the default options?'
+echo 'Create a new project using the default settings?'
 select yn in "Yes" "No"; do
   case $yn in
   Yes) bash ${tools_path}/makefile.sh ${project_name} > Makefile
@@ -34,10 +34,10 @@ done
 
 # Configure
 
-echo 'Choose a name for your project:'
+echo 'Choose a name for the project:'
 read -p '> ' project_name
 
-echo 'Choose a title for your project:'
+echo 'Choose a title for the project:'
 read -p '> ' window_title
 
 window_width=''
@@ -52,7 +52,7 @@ while ! [[ "$window_height" =~ ^[0-9]+$ ]]; do
   read -p '> ' window_height
 done
 
-echo 'Will the window be resizable?'
+echo 'Resizable window?'
 select yn in "Yes" "No"; do
   case $yn in
   Yes) window_resizable=true
