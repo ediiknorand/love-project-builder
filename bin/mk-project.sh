@@ -11,8 +11,8 @@ window_resizable=false
 input_mouse=false
 input_joystick=false
 
-tools_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-template_path="$(cd "${tools_path}/../template" && pwd)"
+tools_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../tools/"
+template_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../template/"
 
 # Default template
 
