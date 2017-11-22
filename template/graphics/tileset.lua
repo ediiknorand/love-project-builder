@@ -29,7 +29,7 @@ function Tileset.__new(param_table)
   return self
 end
 
-function Tileset:populate(tilemap, batch, x, y, cols, rows)
+function Tileset:populate(batch, tilemap, x, y, cols, rows)
   x = x or 1
   y = y or 1
   cols = cols or tilemap.w
