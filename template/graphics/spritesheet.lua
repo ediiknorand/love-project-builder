@@ -6,8 +6,7 @@ function Spritesheet.__new(param_table)
   -- param_table keys:
   --   filename,
   --   x, y, spr_w, spr_h,
-  --   cols, rows,
-  --   tile_w, tile_h
+  --   cols, rows
 
   local self = {}
 
@@ -19,8 +18,6 @@ function Spritesheet.__new(param_table)
   self.rows   = param_table.rows   or 1
   self.spr_w  = param_table.spr_w  or tex:getWith() - self.x
   self.spr_h  = param_table.spr_h  or tex:getHeight() - self.y
-  self.tile_w = param_table.tile_w or 32
-  self.tile_h = param_table.tile_h or 32
 
   return self
 end

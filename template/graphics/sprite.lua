@@ -37,8 +37,8 @@ function Sprite:set(col, row)
     self.batch:set(
       self.id,
       self.quad,
-      self.x * self.sheet.tile_w,
-      self.y * self.sheet.tile_h,
+      self.x,
+      self.y,
       self.r,
       self.sx,
       self.sy,
@@ -65,8 +65,8 @@ function Sprite:place(param_table)
     self.batch:set(
       self.id,
       self.quad,
-      self.x * self.sheet.tile_w,
-      self.y * self.sheet.tile_h,
+      self.x,
+      self.y,
       self.r,
       self.sx,
       self.sy,
@@ -78,8 +78,8 @@ function Sprite:place(param_table)
   else
     self.id = self.batch:add(
       self.quad,
-      self.x * self.sheet.tile_w,
-      self.y * self.sheet.tile_h,
+      self.x,
+      self.y,
       self.r,
       self.sx,
       self.sy,
