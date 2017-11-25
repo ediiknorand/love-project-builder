@@ -133,7 +133,7 @@ bash ${tools_path}/main-lua.sh \
 bash ${tools_path}/state-lua.sh -"${state_options}" \
   > "${project_name}/util/state.lua"
 
-bash ${tools_path}/start-state-lua.sh "${start_state}" \
+bash ${tools_path}/new-state-lua.sh "${start_state}" \
   > "${project_name}/states/$(echo ${start_state} \
     | tr '[[:upper:]]' '[[:lower:]]').lua"
 
