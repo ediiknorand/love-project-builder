@@ -34,6 +34,9 @@ done
 shift $((OPTIND - 1))
 
 cat << EOF
+-- Generated with Love Project Builder
+-- https://github.com/ediiknorand/love-project-builder
+
 Class = require 'util/class'
 local State = require 'util/state'
 ${start_state_require:--- No -s (Start State) option used}

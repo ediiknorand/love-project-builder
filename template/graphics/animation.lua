@@ -1,3 +1,6 @@
+-- Generated with Love Project Builder
+-- https://github.com/ediiknorand/love-project-builder
+
 local Animation = Class()
 
 function Animation.__new(duration, row, start_f, end_f, reset_f)

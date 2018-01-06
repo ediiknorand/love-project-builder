@@ -1,3 +1,6 @@
+-- Generated with Love Project Builder
+-- https://github.com/ediiknorand/love-project-builder
+
 local Tileset = Class()
 
 function Tileset.__new(param_table)

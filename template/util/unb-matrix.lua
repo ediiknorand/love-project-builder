@@ -1,3 +1,6 @@
+-- Generated with Love Project Builder
+-- https://github.com/ediiknorand/love-project-builder
+
 local UnbArray = require 'util/unb-array'
 
 local UnbMatrix = Class()

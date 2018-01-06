@@ -1,3 +1,6 @@
+-- Generated with Love Project Builder
+-- https://github.com/ediiknorand/love-project-builder
+
 local Collision = Class()
 
 local GridIterator = require 'grid/grid-iterator'

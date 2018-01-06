@@ -30,6 +30,9 @@ done
 shift $((OPTIND - 1))
 
 cat << EOF
+-- Generated with Love Project Builder
+-- https://github.com/ediiknorand/love-project-builder
+
 function love.conf(t)
   t.accelerometerjoystick = false
 

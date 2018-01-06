@@ -25,6 +25,9 @@ done
 shift $((OPTIND - 1))
 
 cat << EOF
+-- Generated with Love Project Builder
+-- https://github.com/ediiknorand/love-project-builder
+
 local Stack = require 'util/stack'
 
 local State = Class()

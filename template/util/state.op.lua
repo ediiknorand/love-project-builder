@@ -1,3 +1,6 @@
+-- Generated with Love Project Builder
+-- https://github.com/ediiknorand/love-project-builder
+
 function State.get_current()
   local state = state_stack:peek()
   if state == nil then
