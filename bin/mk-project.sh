@@ -22,11 +22,11 @@ select yn in "Yes" "No"; do
   Yes) bash ${tools_path}/makefile.sh ${project_name} > Makefile
        mkdir ${project_name}
        mkdir -p ${project_name}/util
-       bash ${tools_path}/conf-lua.sh     > ${project_name}/conf.lua
-       bash ${tools_path}/main-lua.sh     > ${project_name}/main.lua
+       bash ${tools_path}/gen-lua/conf.sh     > ${project_name}/conf.lua
+       bash ${tools_path}/gen-lua/main.sh     > ${project_name}/main.lua
        cp ${template_path}/util/class.lua   ${project_name}/util/class.lua
        cp ${template_path}/util/stack.lua   ${project_name}/util/stack.lua
-       bash ${tools_path}/state-lua.sh    > ${project_name}/util/state.lua
+       bash ${tools_path}/gen-lua/state.sh    > ${project_name}/util/state.lua
        exit 0 ;;
   No ) break  ;;
   esac
@@ -116,24 +116,24 @@ mkdir -p "${project_name}/states"
 
 bash ${tools_path}/makefile.sh "${project_name}" > Makefile
 
-bash ${tools_path}/conf-lua.sh \
+bash ${tools_path}/gen-lua/conf.sh \
   -w "${window_width}" \
   -h "${window_height}" \
   -t "${window_title}" \
   -"${conf_options}" \
   > "${project_name}/conf.lua"
 
-bash ${tools_path}/main-lua.sh \
+bash ${tools_path}/gen-lua/main.sh \
   -w "${window_width}" \
   -h "${window_height}" \
   -s "${start_state}" \
   -"${main_options}" \
   > "${project_name}/main.lua"
 
-bash ${tools_path}/state-lua.sh -"${state_options}" \
+bash ${tools_path}/gen-lua/state.sh -"${state_options}" \
   > "${project_name}/util/state.lua"
 
-bash ${tools_path}/new-state-lua.sh "${start_state}" \
+bash ${tools_path}/gen-lua/new-state.sh "${start_state}" \
   > "${project_name}/states/$(echo ${start_state} \
     | tr '[[:upper:]]' '[[:lower:]]').lua"
 

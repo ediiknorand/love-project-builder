@@ -2,7 +2,7 @@
 
 OPTIND=1
 
-template_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../template/"
+template_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../template/"
 state_callbacks_file="${template_path}/util/state.callbacks.lua"
 state_op_file="${template_path}/util/state.op.lua"
 

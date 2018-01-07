@@ -2,7 +2,7 @@
 
 OPTIND=1
 
-template_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../template/"
+template_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../template/"
 main_op_file="${template_path}/main.op.lua"
 
 main_mouse_file="${template_path}/main.mouse.lua"
