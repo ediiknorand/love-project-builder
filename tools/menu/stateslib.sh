@@ -8,19 +8,17 @@ states_list['Test']='states/test.lua'
 # Functions
 
 select_state() {
-  PS3='>>> '
   select opt in "${!states_list[@]}"; do
     case $REPLY in
       *)
         if [[ -z $opt ]]; then
-          echo 'Invalid option' >&2
+          echo 'Invalid Option' >&2
         else
           echo $opt
           break
         fi;;
     esac
   done
-  PS3='>> '
 }
 
 # Load and Save State List

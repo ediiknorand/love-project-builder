@@ -17,12 +17,14 @@ options=( \
 )
 
 PS3='>> '
-select opt in "${options[@]}" "Show States" "Save" "Quit"; do
+select opt in "${options[@]}" "Show States" "Save" "Return"; do
   case $REPLY in
   # Add/Modify State
   1) read -p 'Choose a name for the state: ' state_name
+     PS3='Choose a state type: '
      state_type=$(select_state)
-     states["${state_name}"]="${state_type}";;
+     states["${state_name}"]="${state_type}"
+     PS3='>> ';;
 
   # Remove State
   2) read -p 'Choose a name of a state to remove: ' state_name

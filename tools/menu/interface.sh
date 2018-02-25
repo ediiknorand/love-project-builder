@@ -30,7 +30,7 @@ options=( \
 
 echo 'Love Project Builder - Interface'
 PS3='>> '
-select opt in "${options[@]}" "Show Settings" "Save" "Quit"; do
+select opt in "${options[@]}" "Show Settings" "Save" "Return"; do
   case $REPLY in
   # Project name
   1) read -p 'Choose a name for the project: ' project_name;;
@@ -89,7 +89,8 @@ select opt in "${options[@]}" "Show Settings" "Save" "Quit"; do
     save_setting window_height    "${window_height}"    "${config_file}"
     save_setting window_resizable "${window_resizable}" "${config_file}"
     save_setting input_mouse      "${input_mouse}"      "${config_file}"
-    save_setting input_joystick   "${input_joystick}"   "${config_file}";;
+    save_setting input_joystick   "${input_joystick}"   "${config_file}"
+    echo "Settings saved to ${config_file}";;
 
   # Quit
   $(( ${#options[@]}+3 )) ) exit 0;;
