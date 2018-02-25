@@ -2,8 +2,8 @@
 
 tools_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../"
 template_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../template/"
-configlib_path="$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)"
-source "${configlib_path}/configlib.sh"
+menulib_path="$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)"
+source "${menulib_path}/configlib.sh"
 
 config_file="${1:-config.txt}"
 
