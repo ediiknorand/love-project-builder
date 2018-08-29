@@ -1,9 +1,17 @@
 declare -A states_list
 
 # State Types and Dependencies
-# TODO: implement dependencies
 
-states_list['Test']='states/test.lua'
+states_list['Grid']='grid/collision.lua;'
+states_list['Grid']+='grid/grid-iterator.lua;'
+states_list['Grid']+='grid/map.lua;'
+states_list['Grid']+='util/box.lua;'
+states_list['Grid']+='util/unb-array.lua;'
+states_list['Grid']+='util/unb-matrix.lua;'
+states_list['Grid']+='graphics/animation.lua;'
+states_list['Grid']+='graphics/sprite.lua;'
+states_list['Grid']+='graphics/spritesheet.lua;'
+states_list['Grid']+='graphics/tileset.lua'
 
 # Functions
 
@@ -29,7 +37,7 @@ load_states() {
     return
   fi
   while read -r line; do
-    if echo ${line} | grep -q '^[A-Z][a-z]\+ [A-Z][a-z]\+$'; then
+    if echo ${line} | grep -iq '^[a-z]\+ [a-z]\+$'; then
       local state_name="$(echo ${line} | cut -d' ' -f1)"
       local state_type="$(echo ${line} | cut -d' ' -f2)"
       states["${state_name}"]="${state_type}"
