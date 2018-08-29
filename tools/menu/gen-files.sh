@@ -4,8 +4,10 @@ tools_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../"
 template_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../../template/"
 menulib_path="$(cd "$(dirname ${BASH_SOURCE[0]})" && pwd)"
 source "${menulib_path}/configlib.sh"
+source "${menulib_path}/stateslib.sh"
 
 config_file="${1:-config.txt}"
+states_file="${2:-states.txt}"
 
 # Default Values
 
@@ -64,6 +66,40 @@ bash ${tools_path}/gen-lua/state.sh -"${state_options}" \
 bash ${tools_path}/gen-lua/new-state.sh "${start_state}" \
   > "${project_name}/states/$(echo ${start_state} \
     | tr '[[:upper:]]' '[[:lower:]]').lua"
+
+declare -A states
+load_states "${states_file}"
+
+for state in "${!states[@]}"; do
+  for l in $(echo ${states_list[${states[${state}]}]} | tr ';' ' '); do
+    if ls "${template_path}/$l" &> /dev/null; then
+      mkdir -p "${project_name}/$(dirname "$l")"
+      cp -f "${template_path}/$l" "${project_name}/$l"
+    else
+      echo "Warning: File $l does not exist"
+    fi
+  done
+
+  destfile="${project_name}/states/$(echo ${state} \
+    | tr '[[:upper:]]' '[[:lower:]]').lua"
+  statesh="${tools_path}/gen-lua/state-$(echo ${states[${state}]} \
+    | tr '[[:upper:]]' '[[:lower:]]').sh"
+  tempfile="${template_path}/states/$(echo ${states[${state}]} \
+    | tr '[[:upper:]]' '[[:lower:]]').lua"
+
+  if ls "${statesh}" &> /dev/null; then
+    bash "${statesh}" "${state}" > "${destfile}"
+  elif ls "${tempfile}" &> /dev/null; then
+    cp -f "${tempfile}" "${destfile}"
+  else
+    echo "Warning: Could not generate state file ${destfile}"
+  fi
+  unset destfile
+  unset statesh
+  unset tempfile
+done
+
+unset states
 
 cp ${template_path}/util/class.lua "${project_name}/util/class.lua"
 cp ${template_path}/util/stack.lua "${project_name}/util/stack.lua"
